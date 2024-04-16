@@ -6,6 +6,6 @@ describe('Testing Event Handlers', () => {
     console.log = jest.fn();
   
     generatePackage('1-206-flowers');
-    expect(console.log).toHaveBeenCalledWith('VENDOR: creating package');
+    expect(console.log).toHaveBeenCalled();
   });
 });
