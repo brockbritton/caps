@@ -1,8 +1,8 @@
 
 const event = require('./eventPool.js');
 
-function defineEventMessage(payload, type) {
-  console.log({
+function showPayloadMessage(payload, type) {
+  console.log('EVENT: ', {
     event: type,
     time: new Date().toISOString(),
     payload: payload,
@@ -10,19 +10,16 @@ function defineEventMessage(payload, type) {
 }
 
 event.on('pickup', (payload) => {
-  defineEventMessage(payload, 'pickup');
+  showPayloadMessage(payload, 'pickup');
 });
 
 event.on('inTransit', (payload) => {
-  defineEventMessage(payload, 'in-transit');
+  showPayloadMessage(payload, 'in-transit');
 });
 
 event.on('delivered', (payload) => {
-  defineEventMessage(payload, 'delivered');
+  showPayloadMessage(payload, 'delivered');
 });
 
 require('./driver');
 require('./vendor');
-
-//call vendor order to pick up package
-event.emit('create', { store: '1-206-flowers' });
