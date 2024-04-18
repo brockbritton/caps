@@ -7,15 +7,15 @@ let socket = io.connect('http://localhost:3000/caps');
 
 socket.emit('join', {
   clientId: 'vendor',
-  vendorId: '1-206-flowers',
+  vendorId: '1-206-aitrees',
 });
 
 socket.on('delivered', (payload) => {
   console.log('VENDOR: thank you for delivering package', payload.orderId);
 });
 
-socket.emit('getPendingDeliveries', { vendorId: '1-206-flowers' });
+socket.emit('getPendingDeliveries', { vendorId: '1-206-aitrees' });
 
 //setInterval(() => {
-socket.emit('pickup', generatePackage('1-206-flowers'));
+socket.emit('pickup', generatePackage('1-206-aitrees'));
 //}, 2000);

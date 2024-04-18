@@ -10,7 +10,7 @@ function generatePackage(storeName) {
     customer: `${chance.first()} ${chance.last()}`,
     address: chance.address(),
   };
-
+  
   console.log('VENDOR: creating package', packagePayload.orderId);
 
   return packagePayload;

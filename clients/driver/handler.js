@@ -1,13 +1,20 @@
 
+function transit(socket, payload) {
+  socket.emit('join', {
+    clientId: 'driver', 
+    vendorId: payload.store, 
+  });
+  socket.on('join', console.log);
+  socket.emit('inTransit', payload);
+  console.log('DRIVER: picked up package', payload.orderId);
+}
 
-const event = require('../eventPool.js');
+function deliver(socket, payload) {
+  socket.emit('delivered', payload);
+  console.log('DRIVER: delivered package', payload.orderId);
+}
 
-event.on('pickUp', (payload) => {
-  event.emit('inTransit', payload);
-});
-
-event.on('delivered', (payload) => {
-
-});
-
-//handles transit and delivery messages
+module.exports = {
+  transit,
+  deliver,
+};
